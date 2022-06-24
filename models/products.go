@@ -3,7 +3,7 @@ package models
 import "aluraStoreGo/db"
 
 type Product struct {
-	id          int
+	Id          int
 	Name        string
 	Description string
 	Price       float64
@@ -30,7 +30,7 @@ func SearchAllProducts() []Product {
 		if err != nil {
 			panic(err.Error())
 		}
-
+		p.Id = id
 		p.Name = name
 		p.Description = description
 		p.Price = price
@@ -53,4 +53,15 @@ func CreateNewProduct(name, description string, price float64, quantity int) {
 	insertData.Exec(name, description, price, quantity)
 	defer db.Close()
 
+}
+
+func DeleteProduct(id string) {
+	db := db.ConnectDatabase()
+
+	deleteData, err := db.Prepare("delete from products where id=$1")
+	if err != nil {
+		panic(err.Error())
+	}
+	deleteData.Exec(id)
+	defer db.Close()
 }
