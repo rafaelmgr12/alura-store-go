@@ -74,7 +74,7 @@ To run the this project
 
 - Clone the repo and access the directory;
 - You also need to have a Postgres and create a database and table;
-  - The initial configurations can be encounter in `db.go`, it is needed to use configure this instance;
+  - The initial configurations can be encounter in `db.go`, it is needed to configure this instance;
 - Init the instance in [`localhost: 8000`](http://localhost:8000) with `go run main.go`;
 
 
